@@ -36,7 +36,7 @@
     nautilus
     stow
     neovim
-    zed
+    zed-editor
     
     # Modern CLI Utilities
     htop
@@ -67,6 +67,10 @@
         defaultBranch = "main";
       };
     };
+  };
+
+  home.shellAliases = {
+    update = "sudo nixos-rebuild switch --flake ~/nixos-config#mishnix";
   };
 }
 
