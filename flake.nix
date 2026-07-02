@@ -33,7 +33,7 @@
       mishnix = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs unstable;};
         modules = [
-          ./nixos/configuration.nix
+          ./hosts/mishnix
           home-manager.nixosModules.home-manager
         ];
       };
