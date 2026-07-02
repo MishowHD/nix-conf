@@ -35,6 +35,8 @@
     alacritty
     nautilus
     stow
+    neovim
+    zed
     
     # Modern CLI Utilities
     htop
