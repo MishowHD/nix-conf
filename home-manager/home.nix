@@ -53,6 +53,6 @@
   };
 
   home.shellAliases = {
-    update = "sudo nixos-rebuild switch --flake '/home/mishow/nixos-config#mishnix'";
+    update = "sudo nixos-rebuild switch --flake '/home/mishow/.config/nixos#mishnix'";
   };
 }
