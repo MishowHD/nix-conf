@@ -2,10 +2,17 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, unstable, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  unstable,
+  ...
+}:
 
 {
   boot = {
+    plymouth.enable = true;
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
@@ -13,7 +20,7 @@
   };
 
   networking = {
-     networkmanager.enable = true;
+    networkmanager.enable = true;
   };
 
   time.timeZone = "Europe/Rome";
@@ -57,7 +64,10 @@
   users.users.mishow = {
     isNormalUser = true;
     description = "Giacomo Di Clerico";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     shell = pkgs.zsh;
   };
 
@@ -74,7 +84,10 @@
 
   nix = {
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       auto-optimise-store = true; # Deduplicate files to save space
     };
     gc = {

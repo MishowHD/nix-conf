@@ -9,44 +9,47 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    ...
-  } @ inputs: let
-    system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
-    unstable = import inputs.nixpkgs-unstable {
-      inherit system;
-      config.allowUnfree = true;
-    };
-  in {
-    packages.${system} = import ./pkgs pkgs;
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      ...
+    }@inputs:
+    let
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+      unstable = import inputs.nixpkgs-unstable {
+        inherit system;
+        config.allowUnfree = true;
+      };
+    in
+    {
+      packages.${system} = import ./pkgs pkgs;
 
-    formatter.${system} = pkgs.alejandra;
+      formatter.${system} = pkgs.alejandra;
 
-    nixosModules = import ./modules/nixos;
-    homeManagerModules = import ./modules/home-manager;
+      nixosModules = import ./modules/nixos;
+      homeManagerModules = import ./modules/home-manager;
 
-    nixosConfigurations = {
-      mishnix = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs unstable;};
-        modules = [
-          ./hosts/mishnix
-          home-manager.nixosModules.home-manager
-        ];
+      nixosConfigurations = {
+        mishnix = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs unstable; };
+          modules = [
+            ./hosts/mishnix
+            home-manager.nixosModules.home-manager
+          ];
+        };
+      };
+
+      homeConfigurations = {
+        "mishow@mishnix" = home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgs;
+          extraSpecialArgs = { inherit inputs unstable; };
+          modules = [
+            ./home-manager/home.nix
+          ];
+        };
       };
     };
-
-    homeConfigurations = {
-      "mishow@mishnix" = home-manager.lib.homeManagerConfiguration {
-        pkgs = pkgs;
-        extraSpecialArgs = {inherit inputs unstable;};
-        modules = [
-          ./home-manager/home.nix
-        ];
-      };
-    };
-  };
 }
