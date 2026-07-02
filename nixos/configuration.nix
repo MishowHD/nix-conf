@@ -5,6 +5,13 @@
 { config, pkgs, inputs, unstable, ... }:
 
 {
+  boot = {
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+  };
+
   networking = {
      networkmanager.enable = true;
   };
@@ -60,13 +67,6 @@
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
   };
-
-  environment.systemPackages = with pkgs; [
-    vim
-    git
-    curl
-    procps
-  ];
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono

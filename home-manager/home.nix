@@ -34,6 +34,8 @@
     zoxide
     starship
     unstable.antigravity-cli
+    vim
+    curl
   ];
 
   programs.home-manager.enable = true;

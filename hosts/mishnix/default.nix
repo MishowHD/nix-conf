@@ -11,10 +11,6 @@
   networking.hostName = "mishnix";
 
   boot = {
-    loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-    };
     kernelParams = [
       "quiet"
       "noapic"
