@@ -15,25 +15,23 @@
     home-manager,
     ...
   } @ inputs: let
-    # Target system architecture
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
+    unstable = import inputs.nixpkgs-unstable {
+      inherit system;
+      config.allowUnfree = true;
+    };
   in {
-    # Custom packages
     packages.${system} = import ./pkgs pkgs;
-    
-    # Nix code formatter
+
     formatter.${system} = pkgs.alejandra;
 
-    # Overlays and reusable modules
-    overlays = import ./overlays {inherit inputs;};
     nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
 
-    # NixOS system configuration
     nixosConfigurations = {
       mishnix = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
+        specialArgs = {inherit inputs unstable;};
         modules = [
           ./nixos/configuration.nix
           home-manager.nixosModules.home-manager
@@ -41,11 +39,10 @@
       };
     };
 
-    # Standalone Home Manager configuration
     homeConfigurations = {
       "mishow@mishnix" = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgs;
-        extraSpecialArgs = {inherit inputs;};
+        extraSpecialArgs = {inherit inputs unstable;};
         modules = [
           ./home-manager/home.nix
         ];

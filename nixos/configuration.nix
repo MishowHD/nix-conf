@@ -2,19 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, unstable, ... }:
 
 {
-  # =========================================================================
-  # 📂 IMPORTS & HARDWARE
-  # =========================================================================
   imports = [
     ./hardware-configuration.nix
   ];
 
-  # =========================================================================
-  # 🚀 BOOTLOADER & KERNEL
-  # =========================================================================
   boot = {
     loader = {
       systemd-boot.enable = true;
@@ -27,9 +21,6 @@
     kernelPackages = pkgs.linuxPackages_latest;
   };
 
-  # =========================================================================
-  # 🌐 NETWORKING & LOCALIZATION
-  # =========================================================================
   networking = {
      hostName = "mishnix";
      networkmanager.enable = true;
@@ -52,9 +43,6 @@
     };
   };
 
-  # =========================================================================
-  # 🖥️ DESKTOP ENVIRONMENT & SERVICES
-  # =========================================================================
   services.displayManager.ly.enable = true;
   programs.niri.enable = true;
   programs.dms-shell.enable = true;
@@ -76,9 +64,6 @@
     pulse.enable = true;
   };
 
-  # =========================================================================
-  # 👤 USER CONFIGURATION & SHELL
-  # =========================================================================
   users.users.mishow = {
     isNormalUser = true;
     description = "Giacomo Di Clerico";
@@ -93,23 +78,17 @@
     syntaxHighlighting.enable = true;
   };
 
-  # =========================================================================
-  # 📦 SYSTEM PACKAGES & FONTS
-  # =========================================================================
   environment.systemPackages = with pkgs; [
-    vim   # Always keep a terminal editor in the system profile
-    git   # Core VCS
-    curl  # Network downloads
-    procps # Process monitoring utilities
+    vim
+    git
+    curl
+    procps
   ];
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
   ];
 
-  # =========================================================================
-  # ❄️ NIX SYSTEM SETTINGS & GARBAGE COLLECTION
-  # =========================================================================
   nix = {
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
@@ -122,29 +101,17 @@
     };
   };
 
-  # Nixpkgs config & overlays
   nixpkgs = {
-    overlays = [
-      inputs.self.overlays.additions
-      inputs.self.overlays.modifications
-      inputs.self.overlays.unstable-packages
-    ];
     config.allowUnfree = true;
   };
 
-  # =========================================================================
-  # 🏠 HOME MANAGER INTEGRATION
-  # =========================================================================
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = { inherit inputs unstable; };
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "backup";
     users.mishow = import ../home-manager/home.nix;
   };
 
-  # =========================================================================
-  # 📌 STATE VERSION (DO NOT CHANGE)
-  # =========================================================================
   system.stateVersion = "26.05";
 }

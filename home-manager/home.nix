@@ -1,18 +1,12 @@
-{ config, pkgs, ... }:
+{ config, pkgs, unstable, ... }:
 
 {
-  # =========================================================================
-  # 🏠 HOME MANAGER PROFILE
-  # =========================================================================
   home = {
     username = "mishow";
     homeDirectory = "/home/mishow";
     stateVersion = "26.05";
   };
 
-  # =========================================================================
-  # 🔗 SYMLINK DOTFILES (Using mkOutOfStoreSymlink for instant edits)
-  # =========================================================================
   xdg.configFile = {
     "niri".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/niri";
     "alacritty".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/alacritty";
@@ -27,32 +21,21 @@
     ".zshrc".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.zshrc";
   };
 
-  # =========================================================================
-  # 📦 USER-LEVEL PACKAGES
-  # =========================================================================
   home.packages = with pkgs; [
-    # Desktop & Terminal Apps
     alacritty
     nautilus
     stow
     neovim
     zed-editor
-    
-    # Modern CLI Utilities
     htop
     fastfetch
     bat
     eza
     zoxide
     starship
-    
-    # AI Development Platform
-    antigravity-cli # Traced to unstable nixpkgs via overlay
+    unstable.antigravity-cli
   ];
 
-  # =========================================================================
-  # 🛠️ PROGRAMS CONFIGURED VIA NIX
-  # =========================================================================
   programs.home-manager.enable = true;
 
   # Git config
@@ -70,7 +53,6 @@
   };
 
   home.shellAliases = {
-    update = "sudo nixos-rebuild switch --flake ~/nixos-config#mishnix";
+    update = "sudo nixos-rebuild switch --flake '/home/mishow/nixos-config#mishnix'";
   };
 }
-
