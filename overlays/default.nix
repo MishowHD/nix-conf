@@ -8,7 +8,7 @@
   # You can change versions, add patches, set compilation flags, anything really.
   # https://nixos.wiki/wiki/Overlays
   modifications = final: prev: {
-    antigravity-cli = final.unstablePkgs.antigravity-cli;
+    # Add modifications/overrides here
   };
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will
