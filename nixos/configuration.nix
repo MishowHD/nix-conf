@@ -92,15 +92,7 @@ hardware.bluetooth = {
     ];
     shell = pkgs.zsh;
   };
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    autosuggestions.enable = true;
-    syntaxHighlighting.enable = true;
-    shellAliases = {
-      update = "sudo nixos-rebuild switch";
-    };
-  };
+  programs.zsh.enable = true;
   # Install firefox.
   programs.firefox.enable = true;
   system.autoUpgrade.enable = true;
@@ -124,24 +116,10 @@ hardware.bluetooth = {
   # $ nix search wget 
  
   environment.systemPackages = with pkgs; [
-     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
-     alacritty
-     git
-     stow
-     htop
-    fastfetch
-     nautilus
-     zsh
-     neovim
-     bat
-     eza
-     zoxide
-     starship
-     zsh-syntax-highlighting
-     procps
-     curl
-     antigravity-cli
+    vim # Always keep a simple text editor in system profile
+    git
+    curl
+    procps
   ];
 fonts.packages = with pkgs; [
 nerd-fonts.jetbrains-mono
