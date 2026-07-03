@@ -28,8 +28,6 @@ in
       config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/.config/nvim";
     "DankMaterialShell".source =
       config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/.config/DankMaterialShell";
-    "git/commit-template".source =
-      config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/.config/git/commit-template";
   };
 
   home.file = {

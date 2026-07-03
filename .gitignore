@@ -1,0 +1,6 @@
+# Ignora i file generati automaticamente da DankMaterialShell e Matugen
+dotfiles/.config/DankMaterialShell/firefox.css
+dotfiles/.config/DankMaterialShell/.firstlaunch
+dotfiles/.config/DankMaterialShell/.changelog*
+dotfiles/.config/alacritty/dank-theme.toml
+dotfiles/.config/niri/dms/colors.kdl
