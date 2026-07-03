@@ -39,7 +39,7 @@
       LC_TIME = "en_US.UTF-8";
     };
   };
-
+  services.fwupd.enable = true;
   services.displayManager.ly.enable = true;
   programs.niri.enable = true;
   programs.dms-shell.enable = true;
