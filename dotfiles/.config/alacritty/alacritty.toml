@@ -1,0 +1,28 @@
+[general]
+import = ["~/.config/alacritty/dank-theme.toml"]
+
+[window]
+decorations = "None"
+padding = { x = 12, y = 12 }
+opacity = 0.9
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font" }
+size = 13.0
+
+[scrolling]
+history = 10000
+
+[cursor]
+style = { shape = "Block", blinking = "On" }
+blink_interval = 500
+unfocused_hollow = true
+
+[mouse]
+hide_when_typing = true
+
+[selection]
+save_to_clipboard = false
+
+[bell]
+duration = 0
