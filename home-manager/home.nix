@@ -41,7 +41,6 @@ in
     alacritty
     nautilus
     nixd
-    stow
     neovim
     zed-editor
     htop
