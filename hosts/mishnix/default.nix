@@ -20,6 +20,9 @@
     kernelParams = [
       "quiet"
       "noapic"
+      "intel_iommu=on"
+      "iommu=pt"
+      "lockdown=integrity"
     ];
     kernelPackages = pkgs.linuxPackages_latest;
   };

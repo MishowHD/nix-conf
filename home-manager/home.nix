@@ -18,23 +18,17 @@ in
   };
 
   xdg.configFile = {
-    "niri".source =
-      config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/.config/niri";
-    "alacritty".source =
-      config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/.config/alacritty";
-    "fastfetch".source =
-      config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/.config/fastfetch";
-    "nvim".source =
-      config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/.config/nvim";
+    "niri".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/.config/niri";
+    "alacritty".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/.config/alacritty";
+    "fastfetch".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/.config/fastfetch";
+    "nvim".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/.config/nvim";
     "DankMaterialShell".source =
       config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/.config/DankMaterialShell";
   };
 
   home.file = {
-    ".tmux.conf".source =
-      config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/.tmux.conf";
-    ".zshrc".source =
-      config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/.zshrc";
+    ".tmux.conf".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/.tmux.conf";
+    ".zshrc".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/.zshrc";
   };
 
   home.packages = with pkgs; [
@@ -53,6 +47,7 @@ in
     vim
     curl
     nil
+    sbctl
   ];
 
   programs.home-manager.enable = true;
