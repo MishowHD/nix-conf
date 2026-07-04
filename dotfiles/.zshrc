@@ -116,21 +116,13 @@ alias k='kubectl'
 alias kx='kubectx'
 
 # =============================================================================
-#  Plugins
-#
-#  Must be sourced after all bindkey calls — wraps zle widgets internally
-# =============================================================================
-
-source /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh
-
-# =============================================================================
 #  Prompt & Welcome
 # =============================================================================
 
 NEWLINE=$'\n'
 
 # Welcome line: showing date, uptime and kernel version
-print -P "${NEWLINE}%F{4} it's %D{%A, %B %d} %F{2} $(uptime -p | cut -c 4-) %F{3} $(uname -r) %f"
+print -P "${NEWLINE}%F{4} it's %D{%A, %B %d}"
 
 # Initialize Starship (Modern, fast and functional prompt)
 eval "$(starship init zsh)"

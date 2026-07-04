@@ -90,11 +90,6 @@
       ];
       auto-optimise-store = true; # Deduplicate files to save space
     };
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
-    };
   };
 
   nixpkgs = {
@@ -107,6 +102,13 @@
     useUserPackages = true;
     backupFileExtension = "backup";
     users.mishow = import ../home-manager/home.nix;
+  };
+
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
+    flake = "/etc/nixos";
   };
 
   system.stateVersion = "26.05";
