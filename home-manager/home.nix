@@ -44,6 +44,7 @@ in
     nil
     sbctl
     wl-clipboard
+    clang-tools
   ];
 
   programs.fastfetch.enable = true;
