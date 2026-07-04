@@ -44,6 +44,8 @@ in
     nil
     sbctl
     wl-clipboard
+    nvd
+    nix-output-monitor
   ];
 
   programs.fastfetch.enable = true;
