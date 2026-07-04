@@ -38,17 +38,19 @@ in
     neovim
     zed-editor
     htop
-    fastfetch
-    bat
-    eza
-    zoxide
-    starship
     unstable.antigravity-cli
     vim
     curl
     nil
     sbctl
+    wl-clipboard
   ];
+
+  programs.fastfetch.enable = true;
+  programs.bat.enable = true;
+  programs.eza.enable = true;
+  programs.zoxide.enable = true;
+  programs.starship.enable = true;
 
   programs.home-manager.enable = true;
 

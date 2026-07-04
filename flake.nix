@@ -27,10 +27,9 @@
     {
       packages.${system} = import ./pkgs pkgs;
 
-      formatter.${system} = pkgs.alejandra;
+      formatter.${system} = pkgs.nixfmt;
 
       nixosModules = import ./modules/nixos;
-      homeManagerModules = import ./modules/home-manager;
 
       nixosConfigurations = {
         mishnix = nixpkgs.lib.nixosSystem {
@@ -38,16 +37,6 @@
           modules = [
             ./hosts/mishnix
             home-manager.nixosModules.home-manager
-          ];
-        };
-      };
-
-      homeConfigurations = {
-        "mishow@mishnix" = home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgs;
-          extraSpecialArgs = { inherit inputs unstable; };
-          modules = [
-            ./home-manager/home.nix
           ];
         };
       };
