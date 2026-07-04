@@ -110,6 +110,6 @@
     clean.extraArgs = "--keep-since 4d --keep 3";
     flake = "/etc/nixos";
   };
-
+  programs.nix-ld.enable = true;
   system.stateVersion = "26.05";
 }
