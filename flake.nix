@@ -25,11 +25,8 @@
       };
     in
     {
-      packages.${system} = import ./pkgs pkgs;
 
       formatter.${system} = pkgs.nixfmt;
-
-      nixosModules = import ./modules/nixos;
 
       nixosConfigurations = {
         mishnix = nixpkgs.lib.nixosSystem {
