@@ -15,30 +15,25 @@
   "nix": {
     "enabled": true
   },
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true,
+    "automergeType": "branch"
+  },
   "packageRules": [
     {
       "matchManagers": ["nix"],
       "matchPackageNames": ["nixpkgs", "nixos-unstable"],
       "groupName": "nixpkgs core",
-      "automerge": false,
-      "schedule": ["before 5am on monday"]
+      "automerge": false
     },
     {
       "matchManagers": ["nix"],
-      "matchUpdateTypes": [
-        "lockFileMaintenance",
-        "digest",
-        "pin",
-        "patch",
-        "minor"
-      ],
+      "matchUpdateTypes": ["digest", "pin", "patch", "minor"],
+      "excludePackageNames": ["nixpkgs", "nixos-unstable"],
       "groupName": "flake inputs",
       "automerge": true,
-      "automergeType": "branch",
-      "matchPackageNames": [
-        "!nixpkgs",
-        "!nixos-unstable"
-      ]
+      "automergeType": "branch"
     }
   ]
 }
