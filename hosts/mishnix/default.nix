@@ -16,6 +16,21 @@
 
   networking.hostName = "mishnix";
 
+  # Override options for Btrfs compression (merges with hardware-configuration.nix)
+  fileSystems."/".options = [
+    "compress=zstd"
+    "noatime"
+  ];
+  fileSystems."/home".options = [
+    "compress=zstd"
+    "noatime"
+  ];
+  fileSystems."/nix".options = [
+    "compress=zstd"
+    "noatime"
+  ];
+
+
   boot = {
     kernelParams = [
       "quiet"

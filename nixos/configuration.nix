@@ -112,5 +112,6 @@
   };
   programs.nix-ld.enable = true;
   services.gnome.gnome-keyring.enable = true;
+  zramSwap.enable = true; # Creates a zram block device and uses it as a swap device
   system.stateVersion = "26.05";
 }
