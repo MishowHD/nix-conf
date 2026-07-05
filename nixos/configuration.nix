@@ -111,5 +111,6 @@
     flake = "/etc/nixos";
   };
   programs.nix-ld.enable = true;
+  services.gnome.gnome-keyring.enable = true;
   system.stateVersion = "26.05";
 }

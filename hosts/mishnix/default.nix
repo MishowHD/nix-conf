@@ -30,4 +30,24 @@
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia.open = true; # see the note above
   hardware.nvidia.modesetting.enable = true;
+  services.btrfs.autoScrub.enable = true;
+
+  services.snapper = {
+    snapshotInterval = "hourly";
+    cleanupInterval = "1d";
+    configs = {
+      home = {
+        SUBVOLUME = "/home";
+        ALLOW_USERS = [ "mishow" ];
+        TIMELINE_CREATE = true;
+        TIMELINE_CLEANUP = true;
+        # Quanti snapshot mantenere:
+        TIMELINE_LIMIT_HOURLY = "5";
+        TIMELINE_LIMIT_DAILY = "7";
+        TIMELINE_LIMIT_WEEKLY = "4";
+        TIMELINE_LIMIT_MONTHLY = "0";
+        TIMELINE_LIMIT_YEARLY = "0";
+      };
+    };
+  };
 }

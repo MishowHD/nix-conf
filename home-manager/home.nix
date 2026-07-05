@@ -45,7 +45,15 @@ in
     sbctl
     wl-clipboard
     clang-tools
+    seahorse
   ];
+  gtk = {
+    enable = true;
+    iconTheme = {
+      name = "Papirus-Dark"; # Oppure "Papirus-Dark"
+      package = pkgs.papirus-icon-theme;
+    };
+  };
 
   programs.fastfetch.enable = true;
   programs.bat.enable = true;
