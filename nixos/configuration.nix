@@ -107,10 +107,6 @@
     };
   };
 
-  nixpkgs = {
-    config.allowUnfree = true;
-  };
-
   home-manager = {
     extraSpecialArgs = { inherit inputs unstable; };
     useGlobalPkgs = true;

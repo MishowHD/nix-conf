@@ -24,10 +24,19 @@
     }@inputs:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+
+      nixpkgsConfig = {
+        allowUnfree = true;
+      };
+
+      pkgs = import nixpkgs {
+        inherit system;
+        config = nixpkgsConfig;
+      };
+
       unstable = import inputs.nixpkgs-unstable {
         inherit system;
-        config.allowUnfree = true;
+        config = nixpkgsConfig;
       };
     in
     {
@@ -38,6 +47,7 @@
         mishnix = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs unstable; };
           modules = [
+            { nixpkgs.pkgs = pkgs; }
             ./hosts/mishnix
             home-manager.nixosModules.home-manager
             lanzaboote.nixosModules.lanzaboote
