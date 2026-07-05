@@ -30,10 +30,13 @@
     {
       "matchManagers": ["nix"],
       "matchUpdateTypes": ["digest", "pin", "patch", "minor"],
-      "excludePackageNames": ["nixpkgs", "nixos-unstable"],
       "groupName": "flake inputs",
       "automerge": true,
-      "automergeType": "branch"
+      "automergeType": "branch",
+      "matchPackageNames": [
+        "!nixpkgs",
+        "!nixos-unstable"
+      ]
     }
   ]
 }
