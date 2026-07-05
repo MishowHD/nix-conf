@@ -42,7 +42,6 @@ in
     vim
     curl
     nil
-    sbctl
     wl-clipboard
     clang-tools
     seahorse

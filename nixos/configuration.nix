@@ -14,10 +14,25 @@
   boot = {
     plymouth.enable = true;
     loader = {
-      systemd-boot.enable = true;
+      # systemd-boot must be disabled for lanzaboote to work
+      systemd-boot.enable = pkgs.lib.mkForce false;
       efi.canTouchEfiVariables = true;
     };
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/var/lib/sbctl";
+      autoGenerateKeys.enable = true;
+      autoEnrollKeys = {
+        enable = true;
+        # Automatically reboot to enroll the keys in the firmware
+        autoReboot = true;
+      };
+    };
   };
+
+  environment.systemPackages = [
+    pkgs.sbctl
+  ];
 
   networking = {
     networkmanager.enable = true;
