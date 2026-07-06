@@ -45,7 +45,7 @@
     };
     kernelParams = [
       "quiet"
-      "noapic"
+      "splash"
       "iommu=pt"
       "lockdown=integrity"
     ];
