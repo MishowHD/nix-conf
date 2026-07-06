@@ -32,6 +32,17 @@
 
 
   boot = {
+    loader.systemd-boot.enable = pkgs.lib.mkForce false;
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/var/lib/sbctl";
+      autoGenerateKeys.enable = true;
+      autoEnrollKeys = {
+        enable = true;
+        # Automatically reboot to enroll the keys in the firmware
+        autoReboot = true;
+      };
+    };
     kernelParams = [
       "quiet"
       "noapic"
@@ -41,6 +52,8 @@
     ];
     kernelPackages = pkgs.linuxPackages_latest;
   };
+
+  environment.systemPackages = [ pkgs.sbctl ];
   hardware.graphics.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia.open = true; # see the note above
