@@ -59,6 +59,7 @@
             { nixpkgs.pkgs = pkgs; }
             ./hosts/mishlaptop
             home-manager.nixosModules.home-manager
+            lanzaboote.nixosModules.lanzaboote
           ];
         };
       };
