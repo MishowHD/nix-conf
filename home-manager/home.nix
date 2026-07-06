@@ -16,6 +16,12 @@ in
     homeDirectory = "/home/mishow";
     stateVersion = "26.05";
   };
+  xdg = {
+    userDirs = {
+      enable = true;
+      createDirectories = true;
+    };
+  };
 
   xdg.configFile = {
     "niri".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/.config/niri";
@@ -61,6 +67,10 @@ in
   programs.starship.enable = true;
 
   programs.home-manager.enable = true;
+
+  services.udiskie = {
+    enable = true;
+  };
 
   # Git config
   programs.git = {

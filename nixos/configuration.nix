@@ -110,4 +110,6 @@
   services.gnome.gnome-keyring.enable = true;
   zramSwap.enable = true; # Creates a zram block device and uses it as a swap device
   system.stateVersion = "26.05";
+  services.udisks2.enable = true;
+  programs.gnupg.agent.enable = true;
 }

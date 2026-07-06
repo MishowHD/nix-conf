@@ -184,6 +184,11 @@
       "count": 1,
       "lastUsed": 1781988677898,
       "name": "Mozilla Firefox (bin)"
+    },
+    "firefox": {
+      "count": 1,
+      "lastUsed": 1783364059230,
+      "name": "Firefox"
     }
   },
   "appPickerViewMode": "grid",

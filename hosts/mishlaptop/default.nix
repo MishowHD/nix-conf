@@ -14,7 +14,7 @@
     ./hardware-configuration.nix
   ];
 
-  networking.hostName = "mishnix";
+  networking.hostName = "mishlaptop";
 
   # Override options for Btrfs compression (merges with hardware-configuration.nix)
   fileSystems."/".options = [
@@ -29,7 +29,6 @@
     "compress=zstd"
     "noatime"
   ];
-
 
   boot = {
     loader.systemd-boot.enable = pkgs.lib.mkForce false;
@@ -46,18 +45,13 @@
     kernelParams = [
       "quiet"
       "noapic"
-      "intel_iommu=on"
       "iommu=pt"
       "lockdown=integrity"
     ];
     kernelPackages = pkgs.linuxPackages_latest;
   };
-
   environment.systemPackages = [ pkgs.sbctl ];
   hardware.graphics.enable = true;
-  services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia.open = true; # see the note above
-  hardware.nvidia.modesetting.enable = true;
   services.btrfs.autoScrub.enable = true;
 
   services.snapper = {
