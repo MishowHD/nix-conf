@@ -48,6 +48,7 @@
   programs.niri.enable = true;
   programs.dms-shell.enable = true;
   programs.firefox.enable = true;
+  services.upower.enable = true;
 
   # Hardware enablement services
   hardware.bluetooth = {
