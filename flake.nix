@@ -53,6 +53,14 @@
             lanzaboote.nixosModules.lanzaboote
           ];
         };
+        mishlaptop = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs unstable; };
+          modules = [
+            { nixpkgs.pkgs = pkgs; }
+            ./hosts/mishlaptop
+            home-manager.nixosModules.home-manager
+          ];
+        };
       };
     };
 }
