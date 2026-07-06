@@ -23,6 +23,10 @@
     networkmanager.enable = true;
   };
 
+  services.resolved.enable = true;
+
+  services.tailscale.enable = true;
+
   time.timeZone = "Europe/Rome";
 
   i18n = {

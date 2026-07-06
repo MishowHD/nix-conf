@@ -29,6 +29,7 @@
     "compress=zstd"
     "noatime"
   ];
+  powerManagement.enable = true;
 
   boot = {
     loader.systemd-boot.enable = pkgs.lib.mkForce false;

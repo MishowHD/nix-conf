@@ -30,7 +30,6 @@
     "noatime"
   ];
 
-
   boot = {
     loader.systemd-boot.enable = pkgs.lib.mkForce false;
     lanzaboote = {

@@ -33,10 +33,7 @@
       "groupName": "flake inputs",
       "automerge": true,
       "automergeType": "branch",
-      "matchPackageNames": [
-        "!nixpkgs",
-        "!nixos-unstable"
-      ]
+      "matchPackageNames": ["!nixpkgs", "!nixos-unstable"]
     }
   ]
 }
