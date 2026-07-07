@@ -10,6 +10,10 @@
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v1.1.0";
     };
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -18,6 +22,7 @@
       nixpkgs,
       home-manager,
       lanzaboote,
+      nixos-hardware,
       ...
     }@inputs:
     let
@@ -58,6 +63,7 @@
             ./hosts/mishlaptop
             home-manager.nixosModules.home-manager
             lanzaboote.nixosModules.lanzaboote
+            nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen5
           ];
         };
       };

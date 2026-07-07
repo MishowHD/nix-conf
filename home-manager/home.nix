@@ -51,7 +51,6 @@ in
     wl-clipboard
     clang-tools
     seahorse
-    alsa-utils
     k9s
     kubectl
     kubectx
