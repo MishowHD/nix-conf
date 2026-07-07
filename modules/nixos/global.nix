@@ -79,9 +79,4 @@
   programs.nix-ld.enable = true;
   zramSwap.enable = true; # Creates a zram block device and uses it as a swap device
   programs.gnupg.agent.enable = true;
-
-  boot.loader = {
-    systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
-  };
 }

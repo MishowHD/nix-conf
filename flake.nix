@@ -25,9 +25,6 @@
     {
       self,
       nixpkgs,
-      home-manager,
-      lanzaboote,
-      nixos-hardware,
       ...
     }@inputs:
     let
@@ -46,24 +43,24 @@
         inherit system;
         config = nixpkgsConfig;
       };
+
+      mkHost =
+        hostName:
+        nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs unstable; };
+          modules = [
+            ./hosts/${hostName}
+          ];
+        };
     in
     {
 
       formatter.${system} = pkgs.nixfmt;
 
       nixosConfigurations = {
-        mishnix = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs unstable; };
-          modules = [
-            ./hosts/mishnix
-          ];
-        };
-        mishlaptop = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs unstable; };
-          modules = [
-            ./hosts/mishlaptop
-          ];
-        };
+        mishnix = mkHost "mishnix";
+        mishlaptop = mkHost "mishlaptop";
       };
     };
 }
