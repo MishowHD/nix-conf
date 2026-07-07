@@ -46,7 +46,7 @@
     kernelParams = [
       "quiet"
       "splash"
-      "iommu=pt"
+      "amd_iommu=on"
       "lockdown=integrity"
     ];
     kernelPackages = pkgs.linuxPackages_latest;
