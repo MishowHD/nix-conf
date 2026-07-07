@@ -22,6 +22,7 @@
   networking = {
     networkmanager.enable = true;
   };
+  programs.nm-applet.enable = true;
 
   services.resolved.enable = true;
 
@@ -117,4 +118,5 @@
   system.stateVersion = "26.05";
   services.udisks2.enable = true;
   programs.gnupg.agent.enable = true;
+  services.dbus.enable = true;
 }
