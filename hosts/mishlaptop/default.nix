@@ -54,6 +54,7 @@
   environment.systemPackages = [ pkgs.sbctl ];
   hardware.graphics.enable = true;
   services.btrfs.autoScrub.enable = true;
+  services.fprintd.enable = true;
 
   services.snapper = {
     snapshotInterval = "hourly";
