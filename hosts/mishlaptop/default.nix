@@ -65,6 +65,7 @@
 
   # Hardware settings
   hardware.graphics.enable = true;
+  hardware.alsa.enablePersistence = true;
 
   # Fingerprint reader settings
   services.fprintd.enable = true;
