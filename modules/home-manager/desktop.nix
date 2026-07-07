@@ -27,6 +27,7 @@ in
     spotify
     discord
     seahorse
+    xwayland-satellite
   ];
 
   gtk = {
