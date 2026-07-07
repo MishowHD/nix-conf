@@ -9,7 +9,12 @@
     plymouth.enable = true;
   };
 
-  services.displayManager.ly.enable = true;
+  services.displayManager.ly = {
+    enable = true;
+    settings = {
+      session_log = "/dev/null";
+    };
+  };
   programs.niri.enable = true;
   programs.dms-shell.enable = true;
   programs.firefox.enable = true;
@@ -36,7 +41,7 @@
   ];
 
   services.gnome.gnome-keyring.enable = true;
-  
+
   # For networkmanager indicator in bar
   programs.nm-applet.enable = true;
 }
