@@ -37,6 +37,7 @@ in
     kubectl
     kubectx
     fluxcd
+    fzf
   ];
 
   programs.fastfetch.enable = true;

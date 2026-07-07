@@ -25,6 +25,7 @@ in
     nautilus
     zed-editor
     spotify
+    discord
     seahorse
   ];
 
