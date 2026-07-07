@@ -57,6 +57,7 @@ in
     kubectx
     fluxcd
     btop
+    spotify
   ];
   gtk = {
     enable = true;
