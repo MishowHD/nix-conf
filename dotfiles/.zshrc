@@ -114,6 +114,7 @@ alias gd='git diff'
 
 alias k='kubectl'
 alias kx='kubectx'
+alias nix='noglob nix'
 
 # =============================================================================
 #  Prompt & Welcome
