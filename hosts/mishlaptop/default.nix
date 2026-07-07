@@ -55,6 +55,7 @@
   hardware.graphics.enable = true;
   services.btrfs.autoScrub.enable = true;
   services.fprintd.enable = true;
+  security.pam.services.ly.fprintAuth = false;
 
   services.snapper = {
     snapshotInterval = "hourly";
