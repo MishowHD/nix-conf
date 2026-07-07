@@ -8,10 +8,17 @@
 
 {
   imports = [
-    # Include the shared system configuration
-    ../../nixos/configuration.nix
     # Include the results of the hardware scan
     ./hardware-configuration.nix
+    # Include shared modular configurations
+    ../../modules/nixos/global.nix
+    ../../modules/nixos/desktop.nix
+    ../../modules/nixos/secure-boot.nix
+
+    # Include external modules from inputs
+    inputs.home-manager.nixosModules.home-manager
+    inputs.lanzaboote.nixosModules.lanzaboote
+    inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen5
   ];
 
   networking.hostName = "mishlaptop";
@@ -32,17 +39,6 @@
   powerManagement.enable = true;
 
   boot = {
-    loader.systemd-boot.enable = pkgs.lib.mkForce false;
-    lanzaboote = {
-      enable = true;
-      pkiBundle = "/var/lib/sbctl";
-      autoGenerateKeys.enable = true;
-      autoEnrollKeys = {
-        enable = true;
-        # Automatically reboot to enroll the keys in the firmware
-        autoReboot = true;
-      };
-    };
     kernelParams = [
       "quiet"
       "splash"
@@ -51,7 +47,6 @@
     ];
     kernelPackages = pkgs.linuxPackages_latest;
   };
-  environment.systemPackages = [ pkgs.sbctl ];
   hardware.graphics.enable = true;
   services.btrfs.autoScrub.enable = true;
   services.fprintd.enable = true;
@@ -76,4 +71,6 @@
   #    };
   #  #  };
   #};
+
+  system.stateVersion = "26.05";
 }
