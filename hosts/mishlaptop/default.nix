@@ -57,22 +57,23 @@
   services.fprintd.enable = true;
   security.pam.services.ly.fprintAuth = false;
 
-  services.snapper = {
-    snapshotInterval = "hourly";
-    cleanupInterval = "1d";
-    configs = {
-      home = {
-        SUBVOLUME = "/home";
-        ALLOW_USERS = [ "mishow" ];
-        TIMELINE_CREATE = true;
-        TIMELINE_CLEANUP = true;
-        # Quanti snapshot mantenere:
-        TIMELINE_LIMIT_HOURLY = "5";
-        TIMELINE_LIMIT_DAILY = "7";
-        TIMELINE_LIMIT_WEEKLY = "4";
-        TIMELINE_LIMIT_MONTHLY = "0";
-        TIMELINE_LIMIT_YEARLY = "0";
-      };
-    };
-  };
+  # TODO
+  #services.snapper = {
+  #  snapshotInterval = "hourly";
+  #  cleanupInterval = "1d";
+  #  configs = {
+  #    home = {
+  #      SUBVOLUME = "/home";
+  #      ALLOW_USERS = [ "mishow" ];
+  #      TIMELINE_CREATE = true;
+  #      TIMELINE_CLEANUP = true;
+  #      # Quanti snapshot mantenere:
+  #      TIMELINE_LIMIT_HOURLY = "5";
+  #      TIMELINE_LIMIT_DAILY = "7";
+  #      TIMELINE_LIMIT_WEEKLY = "4";
+  #      TIMELINE_LIMIT_MONTHLY = "0";
+  #      TIMELINE_LIMIT_YEARLY = "0";
+  #    };
+  #  #  };
+  #};
 }
