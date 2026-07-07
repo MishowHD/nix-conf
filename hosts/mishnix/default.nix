@@ -19,6 +19,8 @@
 
   networking.hostName = "mishnix";
 
+  home-manager.users.mishow = import ./home.nix;
+
   # Override options for Btrfs compression (merges with hardware-configuration.nix)
   fileSystems."/".options = [
     "compress=zstd"

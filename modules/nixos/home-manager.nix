@@ -14,6 +14,5 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "backup";
-    users.mishow = import ../../home-manager/home.nix;
   };
 }

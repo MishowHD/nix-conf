@@ -13,7 +13,9 @@
   };
 
   imports = [
-    ../modules/home-manager/global.nix
-    ../modules/home-manager/desktop.nix
+    ../../modules/home-manager/global.nix
+    ../../modules/home-manager/desktop.nix
   ];
+
+  # Host-specific Home Manager settings for mishlaptop can go here
 }
