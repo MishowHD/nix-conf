@@ -14,10 +14,9 @@
     ../../modules/nixos/global.nix
     ../../modules/nixos/desktop.nix
     ../../modules/nixos/secure-boot.nix
+    ../../modules/nixos/home-manager.nix
 
-    # Include external modules from inputs
-    inputs.home-manager.nixosModules.home-manager
-    inputs.lanzaboote.nixosModules.lanzaboote
+    # Include hardware modules from inputs
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen5
   ];
 

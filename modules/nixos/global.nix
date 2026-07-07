@@ -7,6 +7,7 @@
 }:
 
 {
+
   networking = {
     networkmanager.enable = true;
   };
@@ -65,13 +66,7 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  home-manager = {
-    extraSpecialArgs = { inherit inputs unstable; };
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    backupFileExtension = "backup";
-    users.mishow = import ../../home-manager/home.nix;
-  };
+
 
   programs.nh = {
     enable = true;
