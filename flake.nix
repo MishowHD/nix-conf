@@ -59,8 +59,8 @@
       formatter.${system} = pkgs.nixfmt;
 
       nixosConfigurations = {
-        mishnix = mkHost "mishnix";
-        mishlaptop = mkHost "mishlaptop";
+        des-01 = mkHost "des-01";
+        lap-01 = mkHost "lap-01";
       };
     };
 }

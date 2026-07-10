@@ -17,5 +17,5 @@
     ../../modules/home-manager/desktop.nix
   ];
 
-  # Host-specific Home Manager settings for mishnix can go here
+  # Host-specific Home Manager settings for des-01 can go here
 }

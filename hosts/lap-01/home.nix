@@ -17,5 +17,5 @@
     ../../modules/home-manager/desktop.nix
   ];
 
-  # Host-specific Home Manager settings for mishlaptop can go here
+  # Host-specific Home Manager settings for lap-01 can go here
 }

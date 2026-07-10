@@ -16,10 +16,13 @@
     ../../modules/nixos/desktop.nix
     ../../modules/nixos/secure-boot.nix
     ../../modules/nixos/home-manager.nix
+
+    # ThinkPad T14 AMD Gen 5 hardware module
+    inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen5
   ];
 
   # Hostname configuration
-  networking.hostName = "mishnix";
+  networking.hostName = "lap-01";
 
   # Local user configuration
   home-manager.users.mishow = import ./home.nix;
@@ -34,8 +37,8 @@
     # Kernel parameters
     kernelParams = [
       "quiet"
-      "noapic"
-      "intel_iommu=on"
+      "splash"
+      "amd_iommu=on"
       "lockdown=integrity"
     ];
 
@@ -57,38 +60,19 @@
     "noatime"
   ];
 
-  # Graphics settings
-  hardware.graphics.enable = true;
+  # Laptop power management
+  powerManagement.enable = true;
 
-  # Nvidia drivers
-  services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia = {
-    open = true;
-    modesetting.enable = true;
-  };
+  # Hardware settings
+  hardware.graphics.enable = true;
+  hardware.alsa.enablePersistence = true;
+
+  # Fingerprint reader settings
+  services.fprintd.enable = true;
+  security.pam.services.ly.fprintAuth = false;
 
   # Btrfs automatic scrubbing
   services.btrfs.autoScrub.enable = true;
-
-  # TODO
-  #services.snapper = {
-  #  snapshotInterval = "hourly";
-  #  cleanupInterval = "1d";
-  #  configs = {
-  #    home = {
-  #      SUBVOLUME = "/home";
-  #      ALLOW_USERS = [ "mishow" ];
-  #      TIMELINE_CREATE = true;
-  #      TIMELINE_CLEANUP = true;
-  #      # Quanti snapshot mantenere:
-  #      TIMELINE_LIMIT_HOURLY = "5";
-  #      TIMELINE_LIMIT_DAILY = "7";
-  #      TIMELINE_LIMIT_WEEKLY = "4";
-  #      TIMELINE_LIMIT_MONTHLY = "0";
-  #      TIMELINE_LIMIT_YEARLY = "0";
-  #    };
-  #  #  };
-  #};
 
   system.stateVersion = "26.05";
 }
