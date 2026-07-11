@@ -10,6 +10,8 @@
 
   networking = {
     networkmanager.enable = true;
+    firewall.enable = true;
+    nftables.enable = true;
   };
 
   services.resolved.enable = true;
@@ -65,8 +67,6 @@
   };
 
   nixpkgs.config.allowUnfree = true;
-
-
 
   programs.nh = {
     enable = true;
