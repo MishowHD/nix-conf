@@ -1,40 +1,11 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:best-practices"],
-  "ignoreTests": true,
-  "minimumReleaseAge": "3 days",
-  "prHourlyLimit": 0,
-  "prConcurrentLimit": 0,
-  "automerge": false,
-  "automergeType": "pr",
-  "automergeStrategy": "squash",
-  "semanticCommits": "enabled",
-  "semanticCommitType": "chore",
-  "semanticCommitScope": "flake",
-  "commitBody": "Updated:\n{{#each upgrades}}\n- {{depName}}: {{currentVersion}} -> {{newVersion}}\n{{/each}}",
+  "extends": [
+    "config:recommended",
+    ":dependencyDashboard"
+  ],
   "nix": {
     "enabled": true
   },
-  "lockFileMaintenance": {
-    "enabled": true,
-    "automerge": true,
-    "automergeType": "branch",
-    "schedule": ["at any time"]
-  },
-  "packageRules": [
-    {
-      "matchManagers": ["nix"],
-      "matchPackageNames": ["nixpkgs", "nixos-unstable"],
-      "groupName": "nixpkgs core",
-      "automerge": false
-    },
-    {
-      "matchManagers": ["nix"],
-      "matchUpdateTypes": ["digest", "pin", "patch", "minor"],
-      "groupName": "flake inputs",
-      "automerge": true,
-      "automergeType": "branch",
-      "matchPackageNames": ["!nixpkgs", "!nixos-unstable"]
-    }
-  ]
+  "lockFileMaintenance": { "enabled": true }
 }
