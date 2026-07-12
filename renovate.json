@@ -19,6 +19,7 @@
     "enabled": true,
     "automerge": true,
     "automergeType": "branch"
+    "schedule": ["at any time"]
   },
   "packageRules": [
     {
