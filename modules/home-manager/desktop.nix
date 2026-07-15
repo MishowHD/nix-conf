@@ -28,6 +28,7 @@ in
     discord
     seahorse
     xwayland-satellite
+    papers
   ];
 
   gtk = {
