@@ -1,7 +1,7 @@
 {
   config,
   pkgs,
-  unstable,
+  stable,
   ...
 }:
 
@@ -24,7 +24,7 @@ in
   home.packages = with pkgs; [
     neovim
     htop
-    unstable.antigravity-cli
+    antigravity-cli
     vim
     curl
     wl-clipboard

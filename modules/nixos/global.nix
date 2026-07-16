@@ -2,7 +2,7 @@
   config,
   pkgs,
   inputs,
-  unstable,
+  stable,
   ...
 }:
 

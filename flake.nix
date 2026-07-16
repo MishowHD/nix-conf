@@ -2,11 +2,11 @@
   description = "NixOS and Home Manager configuration flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-26.05";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -39,7 +39,7 @@
         config = nixpkgsConfig;
       };
 
-      unstable = import inputs.nixpkgs-unstable {
+      stable = import inputs.nixpkgs-stable {
         inherit system;
         config = nixpkgsConfig;
       };
@@ -48,7 +48,7 @@
         hostName:
         nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit inputs unstable; };
+          specialArgs = { inherit inputs stable; };
           modules = [
             ./hosts/${hostName}
           ];
