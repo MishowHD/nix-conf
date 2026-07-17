@@ -43,5 +43,10 @@ in
     enable = true;
   };
 
-  programs.firefox.enable = true;
+  programs.firefox = {
+    enable = true;
+    policies = {
+      DisableTelemetry = true;
+    };
+  };
 }
