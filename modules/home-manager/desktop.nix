@@ -42,4 +42,6 @@ in
   services.udiskie = {
     enable = true;
   };
+
+  programs.firefox.enable = true;
 }

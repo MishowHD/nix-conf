@@ -24,8 +24,6 @@
   security.pam.services.greetd.enableGnomeKeyring = true;
   security.pam.services.login.enableGnomeKeyring = true;
 
-  programs.firefox.enable = true;
-
   # Hardware enablement services
   hardware.bluetooth = {
     enable = true;
