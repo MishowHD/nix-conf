@@ -51,7 +51,4 @@
   services.gnome.gnome-keyring.enable = true;
   services.dbus.enable = true;
   security.polkit.enable = true;
-
-  # For networkmanager indicator in bar
-  programs.nm-applet.enable = true;
 }
