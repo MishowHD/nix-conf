@@ -17,14 +17,13 @@
     compositor.name = "niri";
     configHome = "/home/mishow";
     configFiles = [
-      ../../dotfiles/.config/DankMaterialShell/settings.json
+      "/home/mishow/.config/DankMaterialShell/settings.json"
     ];
   };
   security.pam.services.greetd.fprintAuth = false;
   security.pam.services.greetd.enableGnomeKeyring = true;
   security.pam.services.login.enableGnomeKeyring = true;
 
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
   programs.firefox.enable = true;
 
   # Hardware enablement services
