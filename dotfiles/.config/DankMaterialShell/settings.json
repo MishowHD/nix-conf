@@ -308,7 +308,7 @@
     }
   ],
   "networkPreference": "wifi",
-  "iconThemeDark": "System Default",
+  "iconThemeDark": "Papirus-Dark",
   "iconThemeLight": "System Default",
   "iconThemePerMode": false,
   "lastAppliedIconTheme": "",
@@ -558,8 +558,10 @@
   },
   "hyprlandOutputSettings": {},
   "displayProfiles": {},
-  "activeDisplayProfile": {},
-  "displayProfileAutoSelect": false,
+  "activeDisplayProfile": {
+    "niri": "auto_5af6115"
+  },
+  "displayProfileAutoSelect": true,
   "displayShowDisconnected": false,
   "displaySnapToEdge": true,
   "connectedFrameBarStyleBackups": {},
