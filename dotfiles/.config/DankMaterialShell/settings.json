@@ -145,12 +145,22 @@
       "width": 50
     },
     {
-      "id": "idleInhibitor",
+      "id": "builtin_tailscale",
       "enabled": true,
       "width": 50
     },
     {
       "id": "builtin_cups",
+      "enabled": true,
+      "width": 50
+    },
+    {
+      "id": "idleInhibitor",
+      "enabled": true,
+      "width": 50
+    },
+    {
+      "id": "doNotDisturb",
       "enabled": true,
       "width": 50
     }
