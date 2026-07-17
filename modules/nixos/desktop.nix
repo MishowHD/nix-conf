@@ -17,7 +17,7 @@
     compositor.name = "niri";
     configHome = "/home/mishow";
     configFiles = [
-      "/home/mishow/.config/nixos/dotfiles/.config/DankMaterialShell/settings.json"
+      ../../dotfiles/.config/DankMaterialShell/settings.json
     ];
   };
   security.pam.services.greetd.fprintAuth = false;
