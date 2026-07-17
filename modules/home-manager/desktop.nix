@@ -29,6 +29,7 @@ in
     seahorse
     xwayland-satellite
     papers
+    gh
   ];
 
   gtk = {
