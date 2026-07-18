@@ -22,7 +22,6 @@
   };
   security.pam.services.greetd.fprintAuth = false;
   security.pam.services.greetd.enableGnomeKeyring = true;
-  security.pam.services.login.enableGnomeKeyring = true;
 
   # Hardware enablement services
   hardware.bluetooth = {
