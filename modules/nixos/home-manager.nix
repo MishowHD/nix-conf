@@ -1,6 +1,5 @@
 {
   inputs,
-  stable,
   ...
 }:
 
@@ -10,7 +9,7 @@
   ];
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs stable; };
+    extraSpecialArgs = { inherit inputs; };
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "backup";

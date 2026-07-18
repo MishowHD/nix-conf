@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -39,16 +38,11 @@
         config = nixpkgsConfig;
       };
 
-      stable = import inputs.nixpkgs-stable {
-        inherit system;
-        config = nixpkgsConfig;
-      };
-
       mkHost =
         hostName:
         nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit inputs stable; };
+          specialArgs = { inherit inputs; };
           modules = [
             ./hosts/${hostName}
           ];
