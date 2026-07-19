@@ -18,6 +18,38 @@
           "niri": {}
         }
       }
+    },
+    {
+      "id": "auto_eed335ba",
+      "name": "",
+      "outputs": {
+        "eDP-1": {
+          "mode": "1920x1200@60.001",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "scale": 1.25,
+          "transform": "Normal",
+          "vrr": true,
+          "disabled": false,
+          "niri": {}
+        },
+        "HDMI-A-1": {
+          "mode": "1920x1080@60.000",
+          "position": {
+            "x": 1536,
+            "y": 0
+          },
+          "scale": 1,
+          "transform": "Normal",
+          "vrr": true,
+          "disabled": false,
+          "niri": {
+            "vrrOnDemand": null
+          }
+        }
+      }
     }
   ]
 }
