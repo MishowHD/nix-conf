@@ -5,9 +5,6 @@ let
 in
 {
   # Helper to build a NixOS system configuration for a host in hosts/<hostName>
-  # Automatically imports base modules from modules/nixos
-  # Accepts either a string (hostName) or an attrset with options:
-  # { hostName, system ? "x86_64-linux", specialArgs ? {}, modules ? [] }
   mkHost =
     host:
     let
