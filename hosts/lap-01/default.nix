@@ -16,7 +16,6 @@
 
     kernelParams = [
       "quiet"
-      "splash"
       "amd_iommu=on"
       "lockdown=integrity"
     ];
