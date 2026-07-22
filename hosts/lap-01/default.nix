@@ -44,7 +44,6 @@
   hardware.alsa.enablePersistence = true;
 
   services.fprintd.enable = true;
-  security.pam.services.ly.fprintAuth = false;
 
   system.stateVersion = "26.05";
 }
