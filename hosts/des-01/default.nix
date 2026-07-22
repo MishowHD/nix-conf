@@ -1,36 +1,18 @@
-{
-  config,
-  pkgs,
-  inputs,
-  ...
-}:
+{ pkgs, ... }:
 
 {
   imports = [
-    # Hardware scan results
     ./hardware-configuration.nix
-
-    # Shared NixOS modules
-    ../../modules/nixos/global.nix
-    ../../modules/nixos/desktop.nix
-    ../../modules/nixos/secure-boot.nix
-    ../../modules/nixos/home-manager.nix
   ];
 
-  # Hostname configuration
   networking.hostName = "des-01";
 
-  # Local user configuration
-  home-manager.users.mishow = import ./home.nix;
-
   boot = {
-    # EFI bootloader
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
 
-    # Kernel parameters
     kernelParams = [
       "quiet"
       "noapic"
@@ -38,7 +20,6 @@
       "lockdown=integrity"
     ];
 
-    # Kernel package version
     kernelPackages = pkgs.linuxPackages_latest;
   };
 
@@ -55,8 +36,8 @@
     "compress=zstd"
     "noatime"
   ];
+  services.btrfs.autoScrub.enable = true;
 
-  # Graphics settings
   hardware.graphics.enable = true;
 
   # Nvidia drivers
@@ -66,31 +47,7 @@
     modesetting.enable = true;
   };
 
-  # Btrfs automatic scrubbing
-  services.btrfs.autoScrub.enable = true;
-
-  # TODO
-  #services.snapper = {
-  #  snapshotInterval = "hourly";
-  #  cleanupInterval = "1d";
-  #  configs = {
-  #    home = {
-  #      SUBVOLUME = "/home";
-  #      ALLOW_USERS = [ "mishow" ];
-  #      TIMELINE_CREATE = true;
-  #      TIMELINE_CLEANUP = true;
-  #      # Quanti snapshot mantenere:
-  #      TIMELINE_LIMIT_HOURLY = "5";
-  #      TIMELINE_LIMIT_DAILY = "7";
-  #      TIMELINE_LIMIT_WEEKLY = "4";
-  #      TIMELINE_LIMIT_MONTHLY = "0";
-  #      TIMELINE_LIMIT_YEARLY = "0";
-  #    };
-  #  #  };
-  #};
-  programs.steam = {
-    enable = true;
-  };
+  programs.steam.enable = true;
 
   system.stateVersion = "26.05";
 }

@@ -1,7 +1,4 @@
-{
-  inputs,
-  ...
-}:
+{ inputs, ... }:
 
 {
   imports = [
@@ -13,5 +10,6 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "backup";
+    users.mishow = import ../home-manager;
   };
 }
