@@ -21,40 +21,21 @@
   };
 
   outputs =
-    {
-      self,
-      nixpkgs,
-      ...
-    }@inputs:
+    { self, nixpkgs, ... }@inputs:
     let
       system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
 
-      nixpkgsConfig = {
-        allowUnfree = true;
-      };
-
-      pkgs = import nixpkgs {
-        inherit system;
-        config = nixpkgsConfig;
-      };
-
-      mkHost =
-        hostName:
-        nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./hosts/${hostName}
-          ];
-        };
+      customLib = import ./lib { inherit inputs; };
     in
     {
+      lib = customLib;
 
       formatter.${system} = pkgs.nixfmt;
 
       nixosConfigurations = {
-        des-01 = mkHost "des-01";
-        lap-01 = mkHost "lap-01";
+        des-01 = customLib.mkHost "des-01";
+        lap-01 = customLib.mkHost "lap-01";
       };
     };
 }
