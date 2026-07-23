@@ -31,6 +31,7 @@
     seahorse
     xwayland-satellite
     papers
+    telegram-desktop
 
     #Development
     rustc
