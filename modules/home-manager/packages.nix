@@ -31,5 +31,13 @@
     seahorse
     xwayland-satellite
     papers
+
+    #Development
+    rustc
+    cargo
+    rust-analyzer
+    clippy
+    rustfmt
+    gcc
   ];
 }
