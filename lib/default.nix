@@ -2,24 +2,43 @@
 
 let
   inherit (inputs.nixpkgs) lib;
-in
-{
-  # Helper to build a NixOS system configuration for a host in hosts/<hostName>
-  mkHost =
-    host:
+
+  # Core helper to build a NixOS system configuration
+  mkSystem =
+    {
+      host,
+      isServer ? false,
+      pkgsInput ? (if isServer && (inputs ? nixpkgs-stable) then inputs.nixpkgs-stable else inputs.nixpkgs),
+      specialArgs ? { },
+      modules ? [ ],
+    }:
     let
       args = if builtins.isString host then { hostName = host; } else host;
       hostName = args.hostName;
       system = args.system or "x86_64-linux";
-      specialArgs = args.specialArgs or { };
-      extraModules = args.modules or [ ];
+      extraModules = (args.modules or [ ]) ++ modules;
+      nixosLib = pkgsInput.lib;
     in
-    lib.nixosSystem {
+    nixosLib.nixosSystem {
       inherit system;
       specialArgs = { inherit inputs; } // specialArgs;
       modules = [
-        ../modules/nixos
-        (../hosts + "/${hostName}")
-      ] ++ extraModules;
+        ../modules/nixos/common
+      ]
+      ++ (if isServer then [ ../modules/nixos/server ] else [ ../modules/nixos/desktop ])
+      ++ [ (../hosts + "/${hostName}") ]
+      ++ extraModules;
     };
+in
+{
+  inherit mkSystem;
+
+  # Fallback helper
+  mkHost = host: mkSystem { inherit host; };
+
+  # Specialized helper for Desktop / Laptop systems (unstable pkgs, Home Manager, GUI)
+  mkDesktop = host: mkSystem (if builtins.isString host then { inherit host; isServer = false; } else host // { isServer = false; });
+
+  # Specialized helper for Server systems (stable pkgs, no Home Manager, auto-upgrade, lean)
+  mkServer = host: mkSystem (if builtins.isString host then { inherit host; isServer = true; } else host // { isServer = true; });
 }

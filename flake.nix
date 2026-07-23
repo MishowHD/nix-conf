@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -34,8 +35,9 @@
       formatter.${system} = pkgs.nixfmt;
 
       nixosConfigurations = {
-        des-01 = customLib.mkHost "des-01";
-        lap-01 = customLib.mkHost "lap-01";
+        des-01 = customLib.mkDesktop "des-01";
+        lap-01 = customLib.mkDesktop "lap-01";
+        srv-01 = customLib.mkServer "srv-01";
       };
     };
 }

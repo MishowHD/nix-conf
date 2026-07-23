@@ -10,6 +10,6 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "backup";
-    users.mishow = import ../home-manager;
+    users.mishow = import ../../home-manager;
   };
 }
