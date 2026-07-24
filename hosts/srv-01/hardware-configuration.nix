@@ -12,10 +12,8 @@
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-label/nixos";
-    fsType = "ext4";
-  };
+  # File systems are declaratively configured in ./disko.nix
+  # (Disko automatically populates fileSystems based on disko.devices)
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }

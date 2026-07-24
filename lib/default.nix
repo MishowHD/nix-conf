@@ -25,6 +25,7 @@ let
       modules = [
         ../modules/nixos/common
       ]
+      ++ (if inputs ? disko then [ inputs.disko.nixosModules.disko ] else [ ])
       ++ (if isServer then [ ../modules/nixos/server ] else [ ../modules/nixos/desktop ])
       ++ [ (../hosts + "/${hostName}") ]
       ++ extraModules;
