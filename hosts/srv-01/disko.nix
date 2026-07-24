@@ -1,20 +1,13 @@
-# Disko configuration for srv-01 (Proxmox VM / Bare-Metal)
-#
-# Usage:
-# - Adjust `device = "/dev/sda";` if Proxmox uses VirtIO disks (`/dev/vda`) or NVMe (`/dev/nvme0n1`).
-# - Btrfs subvolumes allow clean separation of root, home, nix store, and server data (/var/lib).
 {
   disko.devices = {
     disk = {
       main = {
-        # Modify this to match your disk device (e.g. /dev/vda for VirtIO SCSI, /dev/sda for SCSI, /dev/nvme0n1 for NVMe)
         device = "/dev/sda";
         type = "disk";
         content = {
           type = "gpt";
           partitions = {
             ESP = {
-              priority = 1;
               name = "ESP";
               start = "1M";
               end = "1G";
@@ -62,7 +55,7 @@
           };
         };
       };
-      # Secondary disk (/dev/sdb) for data storage (e.g. 200GB+ disk in Proxmox)
+      # Secondary disk (/dev/sdb) for data storage
       data = {
         device = "/dev/sdb";
         type = "disk";
