@@ -63,24 +63,29 @@
           };
         };
       };
-      # Optional: Uncomment and configure if adding a second disk in Proxmox (e.g. /dev/sdb)
-      # data = {
-      #   device = "/dev/sdb";
-      #   type = "disk";
-      #   content = {
-      #     type = "gpt";
-      #     partitions = {
-      #       storage = {
-      #         size = "100%";
-      #         content = {
-      #           type = "filesystem";
-      #           format = "ext4";
-      #           mountpoint = "/mnt/data";
-      #         };
-      #       };
-      #     };
-      #   };
-      # };
+      # Secondary disk (/dev/sdb) for data storage (e.g. 200GB+ disk in Proxmox)
+      data = {
+        device = "/dev/sdb";
+        type = "disk";
+        content = {
+          type = "gpt";
+          partitions = {
+            data = {
+              size = "100%";
+              content = {
+                type = "btrfs";
+                extraArgs = [ "-f" ];
+                subvolumes = {
+                  "@data" = {
+                    mountpoint = "/mnt/data";
+                    mountOptions = [ "compress=zstd" "noatime" ];
+                  };
+                };
+              };
+            };
+          };
+        };
+      };
     };
   };
 }
