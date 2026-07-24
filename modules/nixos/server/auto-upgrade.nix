@@ -5,8 +5,7 @@
   system.autoUpgrade = {
     enable = true;
     dates = "04:00";
-    randomizedDelaySec = "0s"; # Disable random delay (executes exactly at 04:00)
-    allowReboot = false; # Set to true if you want automatic reboots after kernel updates
+    allowReboot = true;
   };
 
   # Automatic store garbage collection to keep disk space lean
