@@ -17,8 +17,8 @@
               priority = 1;
               name = "ESP";
               start = "1M";
-              end = "512M";
-              type = "EF00";
+              end = "1G";
+              type = "EF00"; # EFI System Partition code for UEFI bootloader
               content = {
                 type = "filesystem";
                 format = "vfat";
@@ -30,7 +30,6 @@
               size = "100%";
               content = {
                 type = "btrfs";
-                extraArgs = [ "-f" ]; # Force overwrite existing partitions
                 subvolumes = {
                   # Subvolume for root filesystem
                   "@" = {
@@ -74,7 +73,6 @@
               size = "100%";
               content = {
                 type = "btrfs";
-                extraArgs = [ "-f" ];
                 subvolumes = {
                   "@data" = {
                     mountpoint = "/mnt/data";
