@@ -21,7 +21,7 @@ let
     in
     nixosLib.nixosSystem {
       inherit system;
-      specialArgs = { inherit inputs; } // specialArgs;
+      specialArgs = { inherit inputs hostName; } // specialArgs;
       modules = [
         ../modules/nixos/common
       ]
